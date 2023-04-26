@@ -116,4 +116,14 @@ app.get("/update_status", (req, res) => {
    });
 });
 
+app.post("/delete_node_point", (req,res) => {
+   const node_point_id = req.query["node_point_id"]
+   const q= "delete from node_points where id=?"
+   con.query(q, [node_point_id], (err, data) => {
+      console.log(err, data);
+      if (err) return res.json({error: err.sqlMessage});
+      else return res.json({data});
+   });
+});
+
 
