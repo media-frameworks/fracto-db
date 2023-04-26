@@ -1,15 +1,12 @@
 const express = require("express");
 const mysql = require('mysql');
 const cors = require('cors');
+const config = require('./admin/mysql.json')
 
 const app = express();
 const PORT = 3001
-const con = mysql.createConnection({
-   host: "localhost",
-   user: "mikehall",
-   password: "Mkch011$",
-   database: 'fracto'
-});
+
+const con = mysql.createConnection(config);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
